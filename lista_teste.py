@@ -16,7 +16,13 @@ except Exception as err:
 	print('Erro: {}'.format(err))
 
 
-hots = zapi.host.get({
-    "output": "extend"
+hosts = zapi.host.get({
+    "output": ['host', 'name', 'status']
 })
-print(hots)
+
+for host in hosts:
+    host_id = host['hostid']
+    host_name = host['host']
+    host_visiblename = host['name']
+    host_status = host['status']
+    print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))
