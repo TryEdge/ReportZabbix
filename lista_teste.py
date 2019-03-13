@@ -9,7 +9,14 @@ try:
 	zapi.login(USERNAME, PASSWORD)
 	print('Conectado na API do Zabbix, versao: {}'.format(zapi.api_version()))
 
+
+
 except Exception as err:
 	print('Falha ao Conectar na API no Zabbix')
 	print('Erro: {}'.format(err))
 
+
+hots = zapi.host.get({
+    "output": "extend"
+})
+print(hots)
