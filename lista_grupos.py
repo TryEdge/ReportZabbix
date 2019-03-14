@@ -24,7 +24,5 @@ hostgroups = zapi.hostgroup.get({
 
 for hostgroup in hostgroups:
     hostgroup_id = hostgroup['groupid']
-    hostgroup_name = hostgroup['host']
-    host_visiblename = host['name']
-    host_status = host['status']
-    print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))
+    hostgroup_name = hostgroup['name']
+    print('{} - {} '.format(hostgroup_id, hostgroup_name))
