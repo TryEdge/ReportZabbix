@@ -18,12 +18,17 @@ except Exception as err:
 
 hosts = zapi.host.get({
     "output": ['host', 'name', 'status'],
-    "filter": {"host": 'machine'}
+    "filter": {"host": 'machine1'}
 })
 
-for host in hosts:
-    host_id = host['hostid']
-    host_name = host['host']
-    host_visiblename = host['name']
-    host_status = host['status']
-    print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))
+
+if hosts:
+	for host in hosts:
+		host_id = host['hostid']
+		host_name = host['host']
+		host_visiblename = host['name']
+		host_status = host['status']
+		print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))	
+
+else:
+    print('Host não encontrado')
