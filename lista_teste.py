@@ -17,7 +17,8 @@ except Exception as err:
 
 
 hosts = zapi.host.get({
-    "output": ['host', 'name', 'status']
+    "output": ['host', 'name', 'status'],
+    "filter": {"host": 'machine'}
 })
 
 for host in hosts:
