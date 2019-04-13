@@ -18,18 +18,19 @@ except Exception as err:
 def filtrando_hosts(nome_host):
     hosts = zapi.host.get({
         "output": ['host', 'name', 'status'],
-        "filter": {"host": nome_host}
+        "search": {"host": '*' + nome_host + '*'},
+		"searchWildcardsEnabled": True
     })
-    
-    
+
+
     if hosts:
     	for host in hosts:
     		host_id = host['hostid']
     		host_name = host['host']
     		host_visiblename = host['name']
     		host_status = host['status']
-    		print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))	
-    
+    		print('{} - {} - {} - {}'.format(host_id, host_name, host_visiblename, host_status))
+
     else:
         print('Host não encontrado')
 
@@ -37,6 +38,3 @@ def filtrando_hosts(nome_host):
 
 nome_do_host = input('Digite o nome do host: ')
 filtrando_hosts(nome_do_host)
-
-
-
