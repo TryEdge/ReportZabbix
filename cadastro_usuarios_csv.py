@@ -16,11 +16,11 @@ except Exception as err:
 	print('Falha ao Conectar na API no Zabbix')
 	print('Erro: {}'.format(err))
 
-usergroups = zapi.usergroup.get({
-	"output": ['name'],
-	"selectUsers":['alias']
 
-})
 
-arquivo = csv.reader(open('usuarios.csv'))
+arquivo = csv.reader(open('usuarios.csv'),delimiter=';')
+for linha in arquivo:
+	print(linha)
+
+
 zapi.user.logout([])
