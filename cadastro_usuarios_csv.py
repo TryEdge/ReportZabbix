@@ -18,22 +18,24 @@ except Exception as err:
 
 
 
+
+def create_user(alias, grupoid):
+	try:
+		create_user = zapi.user.create({
+			"alias": alias,
+			"passwd": '132@mudar',
+			"usrgrps": [
+			{
+				"usrgrpid": grupoid
+			}
+			]
+		})
+		print('Usuario  {}  cadastrado : '.format(alias))
+	except Exception as err:
+		print('Falha ao cadastrar o usuario : {}'.format(alias))
+
 arquivo = csv.reader(open('usuarios.csv'),delimiter=';')
 for [usuario,grupoid] in arquivo:
-	pass
-
-try:
-	create_user = zapi.user.create({
-		"alias": alias,
-		"passwd": '132@mudar',
-		"usrgrps": [
-		{
-			"usrgrpid": grupoid
-		}
-		]
-	})
-	print('Usuario  cadastrado : {}'.format(alias))
-except Exception as err:
-	print('Falha ao cadastrar o usuario : {}'.format(alias))
+	create_user(alias,grupoid)
 
 zapi.user.logout([])
