@@ -49,3 +49,5 @@ with open('zabbix_list_host-'+data_atual+'.csv', mode='w') as file:
    for host in hosts:
       row=[host['hostid'],host['host'],host['name'],host['status']]
       output.writerow(row)
+
+zapi.user.logout([])
